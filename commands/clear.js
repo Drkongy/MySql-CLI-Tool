@@ -3,7 +3,7 @@ module.exports = {
     description: 'Clears the console',
     execute(message, args) {
         console.clear();
-        console.log('Console cleared');
+        console.clear();
         return;
 
     }
