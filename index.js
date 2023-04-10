@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const readline = require('readline');
-const CommandHandler = require('./CommandHandler');
+const CommandHandler = require('./Handlers/CommandHandler');
+const connectionHandler = require('./Handlers/ConnectionHandler');
 const Logo = require('./Assets/Logo');
 const Colours = require('./Assets/Colours');
 const Theme = require('./Assets/Theme');
@@ -19,11 +20,9 @@ const rl = readline.createInterface({
 });
 
 // create connection object using default values
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: ''
-});
+const connection = connectionHandler.connection;
+
+
 
 
 

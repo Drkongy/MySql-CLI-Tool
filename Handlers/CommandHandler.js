@@ -1,6 +1,8 @@
 const fs = require('fs');
-const Colours = require('./Assets/Colours');
-const Theme = require('./Assets/Theme');
+const Colours = require('../Assets/Colours');
+const Theme = require('../Assets/Theme');
+// const Theme = require('../Commands/');
+
 const Fuse = require('fuse.js');
 
 
@@ -13,9 +15,9 @@ class CommandHandler {
     }
 
     loadCommands() {
-        const commandFiles = fs.readdirSync('./Commands').filter(file => file.endsWith('.js'));
+        const commandFiles = fs.readdirSync(`${__dirname}/../Commands`).filter(file => file.endsWith('.js'));
         for (const file of commandFiles) {
-            const command = require(`./Commands/${file}`);
+            const command = require(`../Commands/${file}`);
             this.commands.set(command.name, command);
             if (!command) {
                 console.log(`Failed to load command: ${file} ❌`);

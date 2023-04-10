@@ -1,4 +1,4 @@
-const CommandHandler = require('../CommandHandler');
+const CommandHandler = require('../Handlers/CommandHandler');
 const Colours = require('../Assets/Colours');
 const Theme = require('../Assets/Theme');
 

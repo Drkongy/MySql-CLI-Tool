@@ -1,2 +1,11 @@
-First I want it to show all of the possible databases it can connect to excluding the default databases.
-then I want the CommandHandler kick in, showing all the possible tables and other stuff.
+Connect to a database. Then let the user choose what table they want to look at.
+
+
+connect - connects to a database. using multiple args, this will change the root directory.
+view - view a table. This will change the current directory to the table. only works if connected to table.
+ls - list the current directory. If connected to a table, this will list the columns. If connected to a database, this will list the tables.
+cd - change directory. This will change the current directory to the table. only works if connected to table.
+
+
+[ ]: # Path: Notes.md
+
