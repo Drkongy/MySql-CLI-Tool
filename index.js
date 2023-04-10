@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const readline = require('readline');
 const CommandHandler = require('./Handlers/CommandHandler');
 const connectionHandler = require('./Handlers/ConnectionHandler');
+const directoryHandler = require('./Handlers/DirectoryHandler');
 const Logo = require('./Assets/Logo');
 const Colours = require('./Assets/Colours');
 const Theme = require('./Assets/Theme');
@@ -20,7 +21,10 @@ const rl = readline.createInterface({
 });
 
 // create connection object using default values
-const connection = connectionHandler.connection;
+const connection = connectionHandler.getConnection();
+const dirHandler = directoryHandler;
+
+directoryHandler.loadDirectory();
 
 
 
@@ -66,11 +70,15 @@ ${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Welcome to Kon
 
 
 
-        // prompt user for input
         promptUser();
 
-        // function to prompt user for input
         function promptUser() {
+
+
+
+
+
+
             rl.question(`${themes.light}${rootUser}${themes.secondary}@${themes.light}${hostname}${themes.main}:${themes.secondary}~ ${bc.end}${bc.end}`, (input) => {
                 // check if user wants to exit
                 if (input === 'exit') {

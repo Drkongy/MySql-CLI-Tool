@@ -10,7 +10,7 @@ module.exports = {
     name: 'tables',
     description: 'Displays a list of available tables in the database',
     execute(message, args) {
-        const conn = connection.connection;
+        const conn = connection.getConnection();
 
         conn.query("SELECT schema_name FROM information_schema.schemata WHERE schema_name NOT IN ('information_schema', 'mysql', 'performance_schema', 'sys', 'phpmyadmin')", (err, rows) => {
             if (err) {

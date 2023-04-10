@@ -10,7 +10,7 @@ module.exports = {
     description: 'Displays a list of available databases',
     execute(message, args) {
         // connect to the database
-        const conn = connection.connection;
+        const conn = connection.getConnection();
 
 
 

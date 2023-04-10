@@ -48,7 +48,7 @@ class CommandHandler {
             command.execute(message, args);
         } catch (error) {
             console.error(error);
-            message.reply('There was an error executing that command!');
+            console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Error: ${themes.secondary}${error} ${bc.e_crimson}❌ ${bc.end}${bc.end}`);
         }
     }
 
