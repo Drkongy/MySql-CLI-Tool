@@ -6,9 +6,6 @@ const Colours = require('./Assets/Colours');
 const Theme = require('./Assets/Theme');
 
 
-
-
-
 let bc = Colours;
 let themes = Theme;
 
@@ -28,8 +25,11 @@ const connection = mysql.createConnection({
 
 const commandHandler = new CommandHandler();
 commandHandler.loadCommands();
+const commands = commandHandler.getCommands();
+for (const [name, command] of commands) {
+    console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Loaded Command: ${themes.secondary}${name} ${bc.e_crimson}✅ ${bc.end}${bc.end}`);
 
-
+}
 
 
 const os = require('os');
@@ -37,6 +37,9 @@ const { log } = require('console');
 const clientname = os.hostname();
 const hostname = connection.config.host;
 const rootUser = connection.config.user;
+// get the version from the package.json file
+const { version } = require('./package.json');
+
 
 
 
@@ -52,10 +55,10 @@ setTimeout(() => {
             console.error('Error connecting to database:', err);
             return;
         }
-        console.log(`${bc.e_gray}[${themes.light}Client: ${themes.secondary}SQL CLI${bc.e_gray}] [${themes.light}Host: ${themes.secondary}${hostname}${bc.e_gray}] [${themes.light}CPU: ${themes.secondary}10%${bc.e_gray}] [${themes.light}RAM: ${themes.secondary}50%${bc.e_gray}] [${themes.light}Disk*: ${themes.secondary}30%${bc.e_gray}]
+        console.log(`${bc.e_gray}[${themes.light}Client: ${themes.secondary}SQL CLI${bc.e_gray}] [${themes.light}Host: ${themes.secondary}${hostname}${bc.e_gray}] [${themes.light}Version: ${themes.secondary}${version}${bc.e_gray}]
 ${bc.e_gray}[${themes.light}Platform: ${themes.secondary}windows_x64${bc.e_gray}] [${themes.light}OS: ${themes.secondary} Windows 11${bc.e_gray}]
 ${bc.e_gray}[${themes.light}Theme: ${themes.secondary}${themes.main}■${themes.light}■${themes.secondary}■${bc.end}]
-${bc.e_gray}(${bc.e_red}?${bc.e_gray}) ${bc.e_crimson}Welcome to Kongolian SQL Management CLI! You're Connected to ${themes.secondary} ${hostname} ${bc.e_crimson} via ${themes.secondary} ${clientname}!${bc.end}${bc.end}`);
+${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Welcome to Kongolian SQL Management CLI! You're Connected to ${themes.secondary}${hostname}${bc.e_blue_violet} via ${themes.secondary}${clientname}!${bc.end}${bc.end}`);
         console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Type ${themes.secondary}help ${bc.e_crimson}to see a list of commands, or type ${themes.secondary}exit ${bc.e_crimson}to quit!${bc.end}${bc.end}`);
 
 
@@ -81,7 +84,9 @@ ${bc.e_gray}(${bc.e_red}?${bc.e_gray}) ${bc.e_crimson}Welcome to Kongolian SQL M
                 }
 
                 // handle command
-                commandHandler.handleCommand(input);
+                // commandHandler.handleCommand(input);
+                commandHandler.handleCommand(input, commandHandler);
+
                 setTimeout(() => {
                     promptUser();
                 }, 100);
