@@ -12,24 +12,56 @@ const connection = mysql.createConnection({
 });
 
 function connect(host, user, password) {
+    // create a new connection object using the given parameters
+    const newConnection = mysql.createConnection({
+        host: host,
+        user: user,
+        password: password
+    });
+
     // close the existing connection if it is open
     if (connection.state !== 'disconnected') {
-        connection.end();
+        connection.end(() => {
+            // update the connection object with the new values
+            Object.assign(connection, newConnection);
+
+            // open a new connection
+            connection.connect((err) => {
+                if (err) {
+                    console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Failed to connect to MySQL server: ${err}${bc.end}${bc.end}`);
+                    return;
+                }
+                console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Connected to MySQL server: ${themes.secondary}${host}${bc.end}${bc.end}`);
+
+                connection.state = 'connected';
+                connection._protocol._ended = false;
+            });
+        });
+    } else {
+        // update the connection object with the new values
+        Object.assign(connection, newConnection);
+
+        // open a new connection
+        connection.connect((err) => {
+            if (err) {
+                console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Failed to connect to MySQL server: ${err}${bc.end}${bc.end}`);
+                return;
+            }
+            console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Connected to MySQL server: ${themes.secondary}${host}${bc.end}${bc.end}`);
+
+            // reset the state of the connection object
+            connection.state = 'connected';
+            connection._protocol._ended = false;
+        });
     }
-
-    connection.config.host = host;
-    connection.config.user = user;
-    connection.config.password = password;
-
-    // open a new connection
-    connection.connect((err) => {
-        if (err) {
-            console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Failed to connect to MySQL server: ${err}${bc.end}${bc.end}`);
-            return;
-        }
-        console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Connected to MySQL server: ${themes.secondary}${host}${bc.end}${bc.end}`);
-    });
 }
+
+
+
+
+
+
+
 
 
 function getConnection() {

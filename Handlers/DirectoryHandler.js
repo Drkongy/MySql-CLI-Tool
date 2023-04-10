@@ -62,6 +62,10 @@ function setCurrentPassword(password) {
     currentPassword = password;
 }
 
+function clearCurrentDirectory() {
+    currentDirectory = '';
+}
+
 module.exports = {
     getCurrentDirectory,
     setCurrentDirectory,
@@ -71,5 +75,6 @@ module.exports = {
     setCurrentHost,
     getCurrentPassword,
     setCurrentPassword,
-    loadDirectory
+    loadDirectory,
+    clearCurrentDirectory
 };
