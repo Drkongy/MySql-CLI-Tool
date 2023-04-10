@@ -4,6 +4,8 @@ const CommandHandler = require('./CommandHandler');
 const Logo = require('./Assets/Logo');
 const Colours = require('./Assets/Colours');
 const Theme = require('./Assets/Theme');
+const packages = require('./package.json');
+
 
 
 let bc = Colours;
@@ -23,13 +25,15 @@ const connection = mysql.createConnection({
     password: ''
 });
 
+
+
 const commandHandler = new CommandHandler();
 commandHandler.loadCommands();
 const commands = commandHandler.getCommands();
 for (const [name, command] of commands) {
     console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Loaded Command: ${themes.secondary}${name} ${bc.e_crimson}✅ ${bc.end}${bc.end}`);
-
 }
+console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Loaded ${themes.secondary}${commands.size} ${bc.e_crimson}commands!${bc.end}${bc.end}`);
 
 
 const os = require('os');

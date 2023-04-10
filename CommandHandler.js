@@ -33,7 +33,7 @@ class CommandHandler {
 
         const command = this.commands.get(commandName);
         // if the command is null or empty just return
-        if (command === null || command === undefined || command === '') {
+        if (commandName === null || commandName === undefined || commandName === '') {
             return;
         }
 

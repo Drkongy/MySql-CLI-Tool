@@ -1,8 +1,10 @@
 {
     "name": "Kongolian SQL Management Server",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "description": "Small project that allows me to access all the data from my sql client, currently for local host servers.",
     "main": "index.js",
+    "author": "Kongolian - Zeeshan",
+    "license": "MIT",
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js"
