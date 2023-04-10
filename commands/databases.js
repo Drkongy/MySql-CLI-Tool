@@ -22,6 +22,8 @@ module.exports = {
             rows.forEach((row) => {
                 console.log(`${themes.light}- ${themes.secondary}${row.schema_name}${bc.end}${bc.end}`);
             });
+            // total number of databases
+            console.log(`${bc.e_dim_gray}Total databases: ${bc.e_blue_violet}${rows.length}${bc.end}${bc.end}`);
             connection.end();
         });
 
