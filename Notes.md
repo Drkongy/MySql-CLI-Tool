@@ -9,3 +9,7 @@ cd - change directory. This will change the current directory to the table. only
 
 [ ]: # Path: Notes.md
 
+
+
+
+The connect and disconnect works for localhost, but not for a remote server. so do that.

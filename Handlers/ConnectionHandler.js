@@ -31,7 +31,7 @@ function connect(host, user, password) {
                     console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Failed to connect to MySQL server: ${err}${bc.end}${bc.end}`);
                     return;
                 }
-                console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Connected to MySQL server: ${themes.secondary}${host}${bc.end}${bc.end}`);
+                console.log(`${bc.e_gray}( ${bc.e_lime_green}🗸${bc.e_gray}) ${bc.e_green}Connected to MySQL server: ${themes.secondary}${host}${bc.end}${bc.end}`);
 
                 connection.state = 'connected';
                 connection._protocol._ended = false;
@@ -47,7 +47,7 @@ function connect(host, user, password) {
                 console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Failed to connect to MySQL server: ${err}${bc.end}${bc.end}`);
                 return;
             }
-            console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Connected to MySQL server: ${themes.secondary}${host}${bc.end}${bc.end}`);
+            console.log(`${bc.e_gray}(${bc.e_lime_green} 🗸${bc.e_gray}) ${bc.e_green}Connected to MySQL server: ${themes.secondary}${host}${bc.end}${bc.end}`);
 
             // reset the state of the connection object
             connection.state = 'connected';

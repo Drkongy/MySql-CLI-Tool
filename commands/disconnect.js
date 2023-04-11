@@ -16,7 +16,7 @@ module.exports = {
                 console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Error closing connection: ${err}${bc.end}${bc.end}`);
                 return;
             }
-            console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Connection closed successfully!${bc.end}${bc.end}`);
+            console.log(`${bc.e_gray}( ${bc.e_lime_green}🗸${bc.e_gray}) ${bc.e_green}Connection closed successfully!${bc.end}${bc.end}`);
         });
 
 
