@@ -12,4 +12,4 @@ cd - change directory. This will change the current directory to the table. only
 
 
 
-The connect and disconnect works for localhost, but not for a remote server. so do that.
+The connect and disconnect works for localhost, but not for a remote server. so do that. - works but not for my server since its shit.

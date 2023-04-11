@@ -74,12 +74,16 @@ ${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Welcome to Kon
 
         function promptUser() {
 
+            // get the directory
+            const directory = dirHandler.getCurrentDirectory();
 
 
 
 
 
-            rl.question(`${themes.light}${rootUser}${themes.secondary}@${themes.light}${hostname}${themes.main}:${themes.secondary}~ ${bc.end}${bc.end}`, (input) => {
+
+
+            rl.question(`${themes.light}${rootUser}${themes.secondary}@${themes.light}${hostname}${themes.main}:${themes.secondary}${directory} ${bc.end}${bc.end}$ `, (input) => {
                 // check if user wants to exit
                 if (input === 'exit') {
                     rl.close();
