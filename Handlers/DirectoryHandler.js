@@ -66,6 +66,27 @@ function clearCurrentDirectory() {
     currentDirectory = '';
 }
 
+function directoryFormat() {
+    if (currentDirectory === '') {
+        currentDirectory = '~';
+    }
+
+
+    if (currentUser === '') {
+        currentUser = 'root';
+    }
+
+    if (currentHost === '') {
+        currentHost = 'localhost';
+    }
+    let formattedDirectory = currentDirectory;
+    if (currentDirectory.includes('/')) {
+        formattedDirectory = currentDirectory.replace(/\//g, `${bc.e_green} -> ${themes.secondary}`);
+
+    }
+    return `${themes.light}${currentUser}${themes.secondary}@${themes.light}${currentHost}${themes.main} ${themes.secondary}${formattedDirectory}${bc.end}${bc.end} $ `;
+}
+
 module.exports = {
     getCurrentDirectory,
     setCurrentDirectory,
@@ -76,5 +97,6 @@ module.exports = {
     getCurrentPassword,
     setCurrentPassword,
     loadDirectory,
-    clearCurrentDirectory
+    clearCurrentDirectory,
+    directoryFormat
 };

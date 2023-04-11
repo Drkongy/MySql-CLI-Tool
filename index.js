@@ -73,17 +73,8 @@ ${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Welcome to Kon
         promptUser();
 
         function promptUser() {
-
-            // get the directory
-            const directory = dirHandler.getCurrentDirectory();
-
-
-
-
-
-
-
-            rl.question(`${themes.light}${rootUser}${themes.secondary}@${themes.light}${hostname}${themes.main}:${themes.secondary}${directory} ${bc.end}${bc.end}$ `, (input) => {
+            const directory = dirHandler.directoryFormat();
+            rl.question(`${directory}`, (input) => {
                 // check if user wants to exit
                 if (input === 'exit') {
                     rl.close();
@@ -97,11 +88,7 @@ ${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Welcome to Kon
                     return;
 
                 }
-
-                // handle command
-                // commandHandler.handleCommand(input);
                 commandHandler.handleCommand(input, commandHandler);
-
                 setTimeout(() => {
                     promptUser();
                 }, 100);
