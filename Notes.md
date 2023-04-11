@@ -1,8 +1,6 @@
-Connect to a database. Then let the user choose what table they want to look at.
+format the root so it looks nicer and more organized. - done
 
-view - view a table. This will change the current directory to the table. only works if connected to table.
-ls - list the current directory. If connected to a table, this will list the columns. If connected to a database, this will list the tables.
-cd - change directory. This will change the current directory to the table. only works if connected to table.
+<!-- more ideas of commands i can do -->
 
 
 [ ]: # Path: Notes.md

@@ -61,8 +61,27 @@ module.exports = {
 
         // get the argument and check if they exist in the table, if not give error
         if (args.length === 1) {
+            const databaseName = currentDirArray[0];
+            const tableName = currentDirArray[1];
+            const columnName = args[0];
 
+            connection.query(`SELECT ${columnName} FROM ${databaseName}.${tableName}`, (err, results, fields) => {
+                if (err) {
+                    console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}An error occurred while trying to display the data!${bc.end}${bc.end}`);
+                    console.error(err);
+                    console.log(`${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Please use the ${themes.secondary}info${bc.e_blue_violet} command to display the current connection${bc.end}${bc.end}`);
+                    console.log(`${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Please use the ${themes.secondary}connect${bc.e_blue_violet} command to connect to a MySQL server${bc.end}${bc.end}`);
+                    return;
+                }
 
+                if (results.length === 0) {
+                    console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Column "${columnName}" does not exist!${bc.end}${bc.end}`);
+                    return;
+                }
+
+                console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Displaying data for "${columnName}"...${bc.end}${bc.end}`);
+                console.table(results);
+            });
         }
 
 

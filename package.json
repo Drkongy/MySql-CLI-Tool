@@ -1,6 +1,6 @@
 {
     "name": "Kongolian SQL Management Server",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Small project that allows me to access all the data from my sql client, currently for local host servers.",
     "main": "index.js",
     "author": "Kongolian - Zeeshan",
@@ -10,6 +10,7 @@
         "dev": "nodemon index.js"
     },
     "dependencies": {
+        "chalk": "^5.2.0",
         "fuse.js": "^6.6.2",
         "mysql": "^2.18.1"
     },
