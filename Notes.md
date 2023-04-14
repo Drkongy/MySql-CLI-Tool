@@ -1,7 +1,7 @@
 things to do:
 
 <!--! do tomorrow -->
-Add a command to insert new data into a table
+Fix the insert command, buggy asf
 
 
 <!--! do thursday -->
