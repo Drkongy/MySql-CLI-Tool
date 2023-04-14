@@ -10,8 +10,9 @@ let bc = Colours;
 let themes = Theme;
 
 class CommandHandler {
-    constructor() {
+    constructor(rl) {
         this.commands = new Map();
+        this.rl = rl; // Store the `rl` instance as a property of the CommandHandler instance
     }
 
     loadCommands() {
@@ -45,7 +46,11 @@ class CommandHandler {
         }
 
         try {
-            command.execute(message, args);
+            if (command.name === 'insert') {
+                command.execute(message, args, this.rl);
+            } else {
+                command.execute(message, args);
+            }
         } catch (error) {
             console.error(error);
             console.log(`${bc.e_gray}(${bc.e_red}!${bc.e_gray}) ${bc.e_crimson}Error: ${themes.secondary}${error} ${bc.e_crimson}❌ ${bc.end}${bc.end}`);

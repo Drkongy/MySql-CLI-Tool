@@ -30,7 +30,7 @@ directoryHandler.loadDirectory();
 
 
 
-const commandHandler = new CommandHandler();
+const commandHandler = new CommandHandler(rl);
 commandHandler.loadCommands();
 const commands = commandHandler.getCommands();
 for (const [name, command] of commands) {
@@ -88,7 +88,7 @@ ${bc.e_gray}(${bc.e_blue_violet}?${bc.e_gray}) ${bc.e_blue_violet}Welcome to Kon
                     return;
 
                 }
-                commandHandler.handleCommand(input, commandHandler);
+                commandHandler.handleCommand(input, commandHandler, rl);
                 setTimeout(() => {
                     promptUser();
                 }, 100);
